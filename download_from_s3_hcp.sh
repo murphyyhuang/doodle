@@ -5,7 +5,7 @@ csv_path=/home/libilab2/a/users/huan1282/dev/src/github.com/EstelleHuang666/GNN-
 subject_ids=$(awk -F "\"*,\"*" '{print $1}' $csv_path)
 subject_id_arr=(`echo ${subject_ids}`)
 target_file_path=/scratch/libilab2/data/data/users/huan1282/REST_2_preproc/
-s3_head=s3://hcp-openaccess/HCP/
+s3_head=s3://hcp-openaccess/HCP_1200/
 
 for subject_id in "${subject_id_arr[@]:2}"
 do 
