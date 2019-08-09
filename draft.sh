@@ -1,16 +1,17 @@
 # download files from s3 hcp
 # Aspera failed ... which leaves me only doing the following
 
+session_id=1
 csv_path=/home/libilab2/a/users/huan1282/dev/src/github.com/EstelleHuang666/GNN-rfMRI-dev/HCP_fMRI_preprocess/data/hcp_s1200.csv
 subject_ids=$(awk -F "\"*,\"*" '{print $1}' $csv_path)
 subject_id_arr=(`echo ${subject_ids}`)
-target_file_path=/scratch/libilab2/data/data/users/huan1282/REST_1_preproc/
+target_file_path=/scratch/libilab2/data/data/users/huan1282/REST_${session_id}_preproc/
 s3_head=s3://hcp-openaccess/HCP_1200/
 
 for subject_id in "${subject_id_arr[@]:2}"
 do 
-  nii_file_dir=$subject_id/MNINonLinear/Results/rfMRI_REST1_LR
-  nii_file_path=$nii_file_dir/rfMRI_REST1_LR_CSF.txt
+  nii_file_dir=$subject_id/MNINonLinear/Results/rfMRI_REST${session_id}_LR
+  nii_file_path=$nii_file_dir/rfMRI_REST${session_id}_LR_WM.txt
   path_to_file="$s3_head$nii_file_path"
   exists=$(aws s3 ls $path_to_file)
   if [ -z "$exists" ]; then
