@@ -11,7 +11,7 @@ s3_head=s3://hcp-openaccess/HCP_1200/
 for subject_id in "${subject_id_arr[@]:2}"
 do 
   nii_file_dir=$subject_id/MNINonLinear/Results/rfMRI_REST${session_id}_LR
-  nii_file_path=$nii_file_dir/rfMRI_REST${session_id}_LR_WM.txt
+  nii_file_path=$nii_file_dir/Movement_Regressors.txt
   path_to_file="$s3_head$nii_file_path"
   exists=$(aws s3 ls $path_to_file)
   if [ -z "$exists" ]; then
