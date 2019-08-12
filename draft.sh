@@ -8,7 +8,7 @@ subject_id_arr=(`echo ${subject_ids}`)
 target_file_path=/scratch/libilab2/data/data/users/huan1282/REST_${session_id}_preproc/
 s3_head=s3://hcp-openaccess/HCP_1200/
 
-for subject_id in "${subject_id_arr[@]:2}"
+for subject_id in "${subject_id_arr[@]:1}"
 do 
   nii_file_dir=$subject_id/MNINonLinear/Results/rfMRI_REST${session_id}_LR
   nii_file_path=$nii_file_dir/Movement_Regressors_dt.txt
